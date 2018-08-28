@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Component } from 'react'
+import axios from 'axios'
 import './Today.css'
 
 class Today extends Component {
@@ -13,7 +14,7 @@ class Today extends Component {
     }
     // This is called when an instance of a component is being created and inserted into the DOM.
     componentWillMount () {
-        fetch('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC&tsyms=USD')
+        axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC&tsyms=USD')
             .then(response => {
                 // We set the latest prices in the state to the prices gotten from Cryptocurrency.
                 this.setState({ btcprice: response.data.BTC.USD });
